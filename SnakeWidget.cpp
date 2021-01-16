@@ -89,11 +89,6 @@ void SnakeWidget::drawMap(QPainter *painter)
                 drawSnake(painter, i, j, cellWidth, cellHeight);
             else if(gameGrid[i][j] == Food)
                 drawFood(painter);
-            else {
-                painter->setBrush(Qt::black);
-                painter->drawRect(i * cellWidth, j * cellHeight,
-                                   cellWidth, cellHeight);
-            }
         }
     }
 
@@ -225,6 +220,7 @@ void SnakeWidget::colision()
 void SnakeWidget::clearMap()
 {
     score = 0;
+    timer->setInterval(250);
     interval = 250;
     snake.clear();
     snake.push_back(QPoint(0, 0));
